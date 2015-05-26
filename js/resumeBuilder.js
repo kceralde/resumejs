@@ -33,14 +33,6 @@ var bio = {
       var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
       $("#skills").append(formattedSkills);
     }
-    $("#mapDiv").append(googleMap);
-    $(document).click(function(loc) {
-      var x = loc.pageX;
-      var y = loc.pageY;
-
-      logClicks(x,y);
-    });
-
     $("#footerContacts").append(formattedMobile).append(formattedEmail).append(formattedGithub).append(formattedTwitter).append(formattedLocation);
     $("#footerContacts").next().append(formattedPic).append(formattedWelcomeMsg);
   }
@@ -56,12 +48,21 @@ var education = {
     "majors": "Encyclopedia",
     "dates": "2012-Present",
     "url": "http://en.wikipedia.org"
+  },
+  {
+    "name": "University Of California",
+    "location": "Silicon Valley, CA",
+    "degree": "Bachelor of Science",
+    "majors": "Speed Reading",
+    "dates": "2007-2010",
+    "url": "http://en.wikipedia.org"
   }],
   "onlineCourses": [{
-    "title": "Front-End Web Developer Nanodegree",
+    "title": "JavaScript",
     "school": "Udacity",
     "date": "2015",
     "url": "www.udacity.com"
+
   }],
   display : function(){
     for (var school in education.schools) {
@@ -131,7 +132,8 @@ var work = {
     "projects": [{
       "title": "A Failed Entertainment",
       "dates": "02/01/1996",
-      "description": '"Alas, poor Yorick! I knew him, Horatio: a fellow of infinite jest, of most excellent fancy: he hath borne me on his back a thousand times; and now, how abhorred in my imagination it is!"'
+      "description": '"Alas, poor Yorick! I knew him, Horatio: a fellow of infinite jest, of most excellent fancy: he hath borne me on his back a thousand times; and now, how abhorred in my imagination it is!"',
+      "image":"images/kitten.jpg"
     }],
     display : function () {
       for(var project in projects.projects) {
@@ -142,12 +144,14 @@ var work = {
         $(".project-entry:last").append(formattedProjectDates);
         var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedProjectDescription);
-        var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[0]);
+        var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
         $(".project-entry:last").append(formattedProjectImage);
-        var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[1]);
+        var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
         $(".project-entry:last").append(formattedProjectImage);
       }
     }
   };
 
   projects.display();
+
+$("#mapDiv").append(googleMap);

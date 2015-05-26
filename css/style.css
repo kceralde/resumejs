@@ -63,7 +63,6 @@ h2, h3, h4, h5 {
   color: #999999;
   line-height: 16px;
   float: right;
-
 }
 
 p {
@@ -194,17 +193,18 @@ span {
   }
 }
 
-#map {
-  display: block;
-  height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 #mapDiv {
   height: 400px;
   width: 100%;
-  padding-bottom: 5%;
+  display: block;
+  padding-bottom: 20px;
+}
+
+#map {
+  display: block;
+  height: 300px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 @media only screen and (min-width: 750px) {

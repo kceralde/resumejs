@@ -1,9 +1,6 @@
 /*
-
 This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
 Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
 Cameron Pittman
 */
 
@@ -65,7 +62,7 @@ The International Name challenge in Lesson 2 where you'll create a function that
 $(document).ready(function() {
   $('button').click(function() {
     var iName = inName(name) || function(){};
-    $('#name').html(iName);  
+    $('#name').html(iName);
   });
 });
 
@@ -85,8 +82,11 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
-});
+      var x = loc.pageX;
+      var y = loc.pageY;
+
+      logClicks(x,y);
+    });
 
 
 
@@ -168,9 +168,10 @@ function initializeMap() {
       content: name
     });
 
+
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -188,9 +189,12 @@ function initializeMap() {
   */
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      createMapMarker(results[0]);
+      for (var i = 0; i < results.length; i++) {
+      var place = results[i];
+      createMapMarker(results[i]);
     }
   }
+}
 
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
@@ -233,11 +237,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+map.fitBounds(mapBounds);
+});
