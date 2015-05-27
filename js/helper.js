@@ -106,12 +106,14 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
+    center: { lat: -34.397, lng: 150.644},
+    zoom: 8,
     disableDefaultUI: true
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+  var map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*
@@ -165,7 +167,7 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: "name"
     });
 
 
